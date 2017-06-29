@@ -131,7 +131,8 @@ class Curl extends Client
     private function prepareHeaders()
     {
         $headers = array(
-            'Connection: close',
+            ' ',
+            //'Connection: close',
         );
 
         if ($this->etag) {
@@ -246,6 +247,7 @@ class Curl extends Client
         curl_setopt($ch, CURLOPT_USERAGENT, $this->user_agent);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $this->prepareHeaders());
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANYSAFE);
         curl_setopt($ch, CURLOPT_ENCODING, '');
         curl_setopt($ch, CURLOPT_COOKIEJAR, 'php://memory');
         curl_setopt($ch, CURLOPT_COOKIEFILE, 'php://memory');
